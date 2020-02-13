@@ -28,8 +28,11 @@ class Admin extends CI_Controller {
             $this->load->view('admin/secure_login');
         } else {
             $row = $this->AdminModel->checkAdmin($formdata);
-            if($row > 0){
+            if ($row > 0) {
                 $this->load->view('admin/admin_dashboard');
+            } else {
+                $this->session->set_flashdata('error', 'Your Account is Invalid');
+                redirect('admin/secure_login', 'refresh');
             }
         }
     }

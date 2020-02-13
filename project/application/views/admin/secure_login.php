@@ -50,9 +50,16 @@
                                 <h5 class="card-title text-center">Sign In</h5>
                                 <?php
                                 $error = validation_errors();
+                                $adminerror = $this->session->flashdata('error');
                                 if ($error) {
                                     echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>' . $error . '</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+                                } elseif ($adminerror) {
+                                    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>' . $adminerror . '</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
