@@ -29,6 +29,7 @@
   <link href="<?PHP echo base_url('vendor/select2/select2.min.css');?>" rel="stylesheet" media="all">
   <link href="<?PHP echo base_url('vendor/datepicker/daterangepicker.css');?>" rel="stylesheet" media="all">
   <link href="<?PHP echo base_url('vendor/datepicker/daterangepicker.css');?>" rel="stylesheet" media="all">
+  <link href="<?PHP echo base_url('assets/css/custom_style.css'); ?>" rel="stylesheet" />
 
 </head>
 
