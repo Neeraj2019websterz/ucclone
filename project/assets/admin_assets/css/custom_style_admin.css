@@ -1,0 +1,17 @@
+nav.sb-topnav.navbar.navbar-expand.navbar-dark.bg-dark {
+    background: linear-gradient(-45deg, #1391a5, #274685);
+}
+.sb-nav-fixed #layoutSidenav #layoutSidenav_nav .sb-sidenav {
+    padding-top: 56px;
+    background: linear-gradient(-45deg, #1391a5, #274685);
+}
+.sb-sidenav-dark .sb-sidenav-footer {
+    background: linear-gradient(-45deg, #1391a5, #274685);
+}
+.sb-sidenav-dark .sb-sidenav-menu .nav-link {
+    color: #ffff;
+}   
+.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
+    text-shadow: 2px 2px 5px #ffff;
+    transition-duration: 1s;
+}
