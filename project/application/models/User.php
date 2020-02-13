@@ -1,4 +1,5 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,16 +13,17 @@
  */
 class User Extends CI_Model
 {
-	public function getUserData()
+    public function insertUserData($data)
     {
-        $query = $this->db->get('users');
-        print_r($query);
+        $res = $this->db->insert('users', $data);
+        if ($res) {
 
-
-
-
+            return "Succefully  registered";
+        }
+        else
+        {
+            return false;
+        }
     }
-     
-   
 
 }
