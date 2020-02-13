@@ -26,32 +26,20 @@
                         <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                             <li class="active"><a href="index.html" class="nav-link">Home</a></li>
                             <li class="has-children">
-                                <a href="blog.html" class="nav-link">Services</a>
+                                <a href="blog.html" class="nav-link">Provider</a>
                                 <ul class="dropdown">
-                                    <li><a href="blog.html" class="nav-link">Shifting Homes</a></li>
-                                    <li><a href="blog.html" class="nav-link">Health & Wellness</a></li>
-                                    <li><a href="blog.html" class="nav-link">Salon Service</a></li>
-                                    <li><a href="blog.html" class="nav-link">Massage at home</a></li>
-                                    <li><a href="blog.html" class="nav-link">Recommended Services</a></li>
+                                    <li><a href="blog.html" class="nav-link">Login</a></li>
+                                    <li><a href="blog.html" class="nav-link">Signup</a></li>
                                 </ul>
                             </li>
-                            <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                              <li class="has-children">
+                                <a href="blog.html" class="nav-link">Customers</a>
+                                <ul class="dropdown">
+                                    <li><a href="blog.html" class="nav-link">Login</a></li>
+                                    <li><a href="blog.html" class="nav-link">Signup</a></li>
+                                </ul>
+                            </li>
 
-                            <li class="has-children">
-                                <a href="blog.html" class="nav-link">Blog</a>
-                                <ul class="dropdown">
-                                    <li><a href="blog.html" class="nav-link">Blog</a></li>
-                                    <li><a href="blog-single.html" class="nav-link">Blog Sigle</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="<?php echo site_url('contact') ?>" class="nav-link">Contact</a></li>
-                            <li class="has-children">
-                                <a href="blog.html" class="nav-link">Login/SignUp</a>
-                                <ul class="dropdown">
-                                    <li><a href="<?php echo site_url('contact') ?>" class="nav-link">Login/SignUp as Customer</a></li>
-                                    <li><a href="<?php echo site_url('contact') ?>" class="nav-link">Login/SignUp as Service Professional</a></li>                                    
-                                </ul>
-                            </li>                        
                         </ul>
 
                     </nav>
@@ -70,3 +58,4 @@
         </div>
 
     </header>
+</div>

@@ -1,3 +1,4 @@
+<div>
 <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="row">
@@ -57,13 +58,115 @@
 
 <script src="<?PHP echo base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
 <script src="<?PHP echo base_url('assets/vendor/jquery/jquery-migrate.min.js'); ?>"></script>
-<script src="<?PHP echo base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"</script>
+<script src="<?PHP echo base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
 <script src="<?PHP echo base_url('assets/vendor/easing/easing.min.js'); ?>"></script>
 <script src="<?PHP echo base_url('assets/vendor/php-email-form/validate.js'); ?>"></script>
 <script src="<?PHP echo base_url('assets/vendor/sticky/sticky.js'); ?>"></script>
 <script src="<?PHP echo base_url('assets/vendor/aos/aos.js'); ?>"></script>
 <script src="<?PHP echo base_url('assets/vendor/owlcarousel/owl.carousel.min.js'); ?>"></script>
 <script src="<?PHP echo base_url('assets/js/main.js'); ?>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 
 </html>
+<script>
+    $(document).ready(function () {
+        $(".form-2").hide();
+    });
+
+    $("#next").click(function () {
+
+        var firstname = $("input[name='firstname']").val();
+        var lastname = $("input[name='lastname']").val();
+        var email = $("input[name='email']").val();
+        var Dateofbirth = $("input[name='Dateofbirth']").val();
+        var phoneno = $("input[name='phoneno']").val();
+        //var gender = $("input[name='lastname']").val();
+        var pasword = $("input[name='password']").val();
+        var confirmpasword = $("input[name='confrimpassword']").val();
+
+        if (firstname == "")
+        {
+            $("#first-name").html("please enter your  name");
+        } else if (lastname == "")
+        {
+            $("#last-name").html("please enter your Last name");
+
+        } else if (email == "")
+        {
+            $("#email").html("please enter your Email");
+
+        } else if (Dateofbirth == "")
+        {
+            $("#dateofbirth").html("please enter your Date of Birth");
+
+        } else if (phoneno == "")
+        {
+            $("#phone-no").html("please enter your phoneno");
+
+        } else if (pasword == "")
+        {
+            $("#password").html("please enter your password");
+
+        } else if (confirmpasword == "")
+        {
+            $("#confirmpassword").html("please enter your Confirm password");
+
+        } else
+        {
+
+            if (pasword == confirmpasword)
+            {
+                $(".form-1").hide();
+                $(".form-2").show();
+            } else
+            {
+                $("#confirmpassword").html("password does not Match");
+            }
+
+        }
+
+    });
+
+
+    $("#submit").click(function (e)
+    {
+    e.preventDefault();
+            var address1 = $("input[name='address1']").val();
+            var address2 = $("input[name='address2']").val();
+            var city = $("input[name='city']").val();
+            var state = $("input[name='state']").val();
+            var country = $("input[name='country']").val();
+            if (address1 == "")
+    {
+    $("#address1").html("please enter your  address");
+    } else if (address2 == "")
+    {
+    $("#address2").html("please enter your address");
+    } else if (city == "")
+    {
+    $("#city").html("please enter your City");
+    } else if (state == "")
+    {
+    $("#state").html("please enter your Date of Birth");
+    } else if (country == "")
+    {
+    $("#country").html("please enter your country");
+    } else
+    {
+
+    $.ajax({
+    type: "POST",
+            url: "<?php echo site_url('userdata'); ?>",
+            data: $("#form-login").serialize(),
+            success: function (response) {
+            console.log(response);
+            }
+    });
+    }
+
+});
+
+
+
+</script>
