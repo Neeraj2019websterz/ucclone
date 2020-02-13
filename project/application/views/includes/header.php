@@ -24,7 +24,7 @@
                     <nav class="site-navigation position-relative text-right" role="navigation">
 
                         <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                            <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                            <li class="active"><a href="<?php echo site_url('/') ?>" class="nav-link">Home</a></li>
                             <li class="has-children">
                                 <a href="blog.html" class="nav-link">Provider</a>
                                 <ul class="dropdown">
@@ -35,8 +35,8 @@
                               <li class="has-children">
                                 <a href="blog.html" class="nav-link">Customers</a>
                                 <ul class="dropdown">
-                                    <li><a href="blog.html" class="nav-link">Login</a></li>
-                                    <li><a href="blog.html" class="nav-link">Signup</a></li>
+                                    <li><a href="<?php echo site_url('/') ?>" class="nav-link">Login</a></li>
+                                    <li><a href="<?php echo site_url('/homepage/signup') ?>" class="nav-link">Signup</a></li>
                                 </ul>
                             </li>
 

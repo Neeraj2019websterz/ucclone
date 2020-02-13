@@ -69,15 +69,43 @@
                                 <span id="address2" class="text-danger pb-3 float-left"></span>
                             </div>
                             <div class="form-label-group pb-3 form-2">
-                                <input type="name"  class="form-control"  name="city" placeholder="City" required>
+
+
+                                <select  class="form-control" name="city" id="city-1">
+                                    <option value="0">--Select a city--</option>
+                                    <option value="city-1">city-1</option>
+                                    <option value="city-1">city-2</option>
+                                    <option value="city-1">city-3</option>
+                                    <option value="city-1">city-4</option>
+                                    <option value="city-1">city-5</option>
+                                </select>
                                 <span id="city" class="text-danger pb-3 float-left"></span>
                             </div>
                             <div class="form-label-group pb-3 form-2">
-                                <input type="name"  class="form-control" name="state" placeholder="state" required>
+
+                                <select  class="form-control" name="state"  id="state-1">
+                                    <option value="0">--Select a state--</option>
+                                    <option value="state-1">state-1</option>
+                                    <option value="state-2">state-2</option>
+                                    <option value="state-3">state-3</option>
+                                    <option value="state-4">state-4</option>
+                                    <option value="state-5">state-5</option>
+                                    <option value="state-6">state-6</option>
+                                </select>
+
                                 <span id="state" class="text-danger pb-3 float-left"></span>
                             </div>
                             <div class="form-label-group pb-3 form-2">
-                                <input type="name" name="country" class="form-control" placeholder="Country" required>
+                                <select  class="form-control" name="country"  id="country-1">
+
+                                    <option value="0">--Select a country--</option>
+                                    <option value="country-1">country-1</option>
+                                    <option value="country-2">country-2</option>
+                                    <option value="country-3">country-3</option>
+                                    <option value="country-4">country-4</option>
+
+                                </select>
+
                                 <span id="country" class="text-danger pb-3 float-left"></span>
                             </div>
                             <div class="form-label-group pb-3 form-2">

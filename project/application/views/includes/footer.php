@@ -1,57 +1,57 @@
 <div>
-<footer class="footer" role="contentinfo">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-4 mb-md-0">
-                <h3>About UC Clone</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ea delectus pariatur, numquam aperiam
-                    dolore nam optio dolorem facilis itaque voluptatum recusandae deleniti minus animi.</p>
-                <p class="social">
-                    <a href="#"><span class="icofont-twitter"></span></a>
-                    <a href="#"><span class="icofont-facebook"></span></a>
-                    <a href="#"><span class="icofont-dribbble"></span></a>
-                    <a href="#"><span class="icofont-behance"></span></a>
-                </p>
-            </div>
-            <div class="col-md-7 ml-auto">
-                <div class="row site-section pt-0">
-                    <div class="col-md-4 mb-4 mb-md-0">
-                        <h3>Navigation</h3>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Pricing</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Become service professional</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 mb-4 mb-md-0">
-                        <h3>Services</h3>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Team</a></li>
-                            <li><a href="#">Collaboration</a></li>
-                            <li><a href="#">Todos</a></li>
-                            <li><a href="#">Events</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 mb-4 mb-md-0">
-                        <h3>Downloads</h3>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Get from the App Store</a></li>
-                            <li><a href="#">Get from the Play Store</a></li>
-                        </ul>
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h3>About UC Clone</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ea delectus pariatur, numquam aperiam
+                        dolore nam optio dolorem facilis itaque voluptatum recusandae deleniti minus animi.</p>
+                    <p class="social">
+                        <a href="#"><span class="icofont-twitter"></span></a>
+                        <a href="#"><span class="icofont-facebook"></span></a>
+                        <a href="#"><span class="icofont-dribbble"></span></a>
+                        <a href="#"><span class="icofont-behance"></span></a>
+                    </p>
+                </div>
+                <div class="col-md-7 ml-auto">
+                    <div class="row site-section pt-0">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <h3>Navigation</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Pricing</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">Become service professional</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <h3>Services</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Collaboration</a></li>
+                                <li><a href="#">Todos</a></li>
+                                <li><a href="#">Events</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <h3>Downloads</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Get from the App Store</a></li>
+                                <li><a href="#">Get from the Play Store</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row justify-content-center text-center">
-            <div class="col-md-7">
-                <p class="copyright">&copy; Copyright UC Clone All Rights Reserved</p>           
+            <div class="row justify-content-center text-center">
+                <div class="col-md-7">
+                    <p class="copyright">&copy; Copyright UC Clone All Rights Reserved</p>
+                </div>
             </div>
-        </div>
 
-    </div>
-</footer>
+        </div>
+    </footer>
 </div> 
 
 <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
@@ -75,7 +75,7 @@
     });
 
     $("#next").click(function () {
-
+        $(".error").html("");
         var firstname = $("input[name='firstname']").val();
         var lastname = $("input[name='lastname']").val();
         var email = $("input[name='email']").val();
@@ -131,41 +131,43 @@
 
     $("#submit").click(function (e)
     {
-    e.preventDefault();
-            var address1 = $("input[name='address1']").val();
-            var address2 = $("input[name='address2']").val();
-            var city = $("input[name='city']").val();
-            var state = $("input[name='state']").val();
-            var country = $("input[name='country']").val();
-            if (address1 == "")
-    {
-    $("#address1").html("please enter your  address");
-    } else if (address2 == "")
-    {
-    $("#address2").html("please enter your address");
-    } else if (city == "")
-    {
-    $("#city").html("please enter your City");
-    } else if (state == "")
-    {
-    $("#state").html("please enter your Date of Birth");
-    } else if (country == "")
-    {
-    $("#country").html("please enter your country");
-    } else
-    {
+        e.preventDefault();
+        $(".error").html("");
+        var address1 = $("input[name='address1']").val();
+        var address2 = $("input[name='address2']").val();
+        var city = $("#city-1 option:selected").val();
+        var state = $("#state-1 option:selected").val();
+        var country = $("#country-1 option:selected").val();
+        console.log(city)
+        if (address1 == "")
+        {
+            $("#address1").html("please enter your  address");
+        } else if (address2 == "")
+        {
+            $("#address2").html("please enter your address");
+        } else if (city == "0")
+        {
+            $("#city").html("please enter your City");
+        } else if (state == "0")
+        {
+            $("#state").html("please enter your state");
+        } else if (country == "0")
+        {
+            $("#country").html("please enter your country");
+        } else
+        {
 
-    $.ajax({
-    type: "POST",
-            url: "<?php echo site_url('userdata'); ?>",
-            data: $("#form-login").serialize(),
-            success: function (response) {
-            console.log(response);
-            }
+            $.ajax({
+                type: "POST",
+                url: "<?php echo site_url('userdata'); ?>",
+                data: $("#form-login").serialize(),
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+
     });
-    }
-
-});
 
 
 
