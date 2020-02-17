@@ -57,3 +57,7 @@ $route['test'] = 'homepage/test';
 $route['userdata'] = 'homepage/userformdata';
 $route['login'] = 'homepage/userlogin';
 $route['subservices/(:num)'] = 'homepage/Subservices/$1';
+$route['admin/dashboard'] = 'admin/admin_dashboard';
+$route['admin/adminlogin'] = 'admin/secure_login_validation';
+$route['admin/service'] = 'admin/services_group';
+$route['admin/createservgrp'] = 'admin/add_service_group';
