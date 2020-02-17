@@ -11,6 +11,56 @@ class AdminModel Extends CI_Model {
         return $res;
     }
 
+    function addservicegroup($formdata) {
+
+        $this->db->where('services_group', $formdata['services_group']);
+        $q = $this->db->get('services_group');
+
+        if ($q->num_rows() > 0) {
+
+            $resp = array(
+                'status' => false,
+                'message' => 'Group name already exists',
+            );
+            return $resp;
+        } else {
+            $query = $this->db->insert('services_group', $formdata);
+
+            if ($query) {
+
+                $resp = array(
+                    'status' => true,
+                    'message' => 'Group name created',
+                );
+                return $resp;
+            } else {
+                $resp = array(
+                    'status' => false,
+                    'message' => 'Group name insert failure',
+                );
+                return $resp;
+            }
+        }
+    }
+
+    function getServicesList() {
+        $sql = "SELECT `services_group`.`services_group`, `services_categery`.`services_categery_list`,`sub_services_list`.`services_list`,`sub_services_list`.`service_fee` , `sub_services_list`.`convenience_fee` FROM `services_group` JOIN services_categery ON services_group.services_group_id=services_categery.services_group_id
+JOIN sub_services_list ON services_categery.services_catagery_id=sub_services_list.services_catagery_id ";
+
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+
+        $serviceArray = [];
+        foreach ($result as $value) {
+            $serviceArray[$value['services_group']] [$value['services_categery_list']][] = [
+                $value['services_list'], $value['service_fee'], $value['convenience_fee']];
+        }
+        return $serviceArray;
+//        echo "<pre>";
+//        print_r($serviceArray);
+//        die;
+    }
+
 }
 
 ?>

@@ -3,47 +3,36 @@
     <div class="container-fluid">
         <h1 class="mt-4">Services</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-            <li class="breadcrumb-item "><a href="">Service Group</a></li>
+            <li class="breadcrumb-item"><a href="<?PHP echo site_URL('admin/dashboard'); ?>">Dashboard</a></li>
+            <li class="breadcrumb-item "><a href="<?PHP echo site_URL('admin/service'); ?>">Service Group</a></li>
             <li class="breadcrumb-item active">Create service group</li>
         </ol>
-        <div class="row">
-            <div class="col-md-12"><a href="<?PHP echo site_URL(); ?>"><button class="btn btn-primary">Create service group</button></a>&nbsp<a href="<?PHP echo site_URL(); ?>"><button class="btn btn-primary">Create service type</button></a></div>            
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div id="accordion">
-                    <div class="card">
-                        <div class="card-header">
-                            <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                Collapsible Group Item #1
-                            </a>
-                        </div>
-                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                            <div class="card-body">
-                                <table class="table table-striped table-bordered">
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Service Name</th>
-                                        <th>Type</th>
-                                        <th>Service fee</th>
-                                        <th>Convenience fee</th>
-                                    </tr>
-                                    <tr>
-                                        <td>placehoder</td>
-                                        <td>placehoder</td>
-                                        <td>placehoder</td>
-                                        <td>placehoder</td>
-                                        <td>placehoder</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
 
+        <?PHP
+        if ($resp) {
+            echo '<div class="row">
+            <div class="col-md-6"> <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>' . $error . '</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>  </div></div>';
+        }
+            ?>
+
+            <div class="row">
+                <div class="col-md-6">
+    <?php echo form_open(site_URL('admin/createservgrp')); ?>
+
+                    <form >
+                        <div class="form-group">
+                            <label >Service Group Name:</label>
+                            <input type="text" class="form-control" placeholder="Enter Service Group Name" id="serviceGroupName" name="serviceGroupName">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+    <?php echo form_close(); ?>
                 </div>
-            </div>            
+            </div>
         </div>
-    </div>
-</main>
-<?php $this->load->view("includes/adminfooter") ?>
+    </main>
+    <?php $this->load->view("includes/adminfooter"); ?>
