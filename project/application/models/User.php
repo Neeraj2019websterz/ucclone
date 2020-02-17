@@ -19,11 +19,19 @@ class User Extends CI_Model
         if ($res) {
 
             return "Succefully  registered";
-        }
-        else
-        {
+        } else {
             return false;
         }
+    }
+
+    public function getUserlogindata($formdata)
+    {
+
+        $this->db->where("email", $formdata['email']);
+        $this->db->where("password", $formdata['password']);
+        $this->db->from('users');
+        $res = $this->db->count_all_results();
+        return $res;
     }
 
 }

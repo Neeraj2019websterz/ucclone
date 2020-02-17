@@ -35,7 +35,7 @@
                               <li class="has-children">
                                 <a href="blog.html" class="nav-link">Customers</a>
                                 <ul class="dropdown">
-                                    <li><a href="<?php echo site_url('/') ?>" class="nav-link">Login</a></li>
+                                    <li><a href="<?php echo site_url('/login') ?>" class="nav-link">Login</a></li>
                                     <li><a href="<?php echo site_url('/homepage/signup') ?>" class="nav-link">Signup</a></li>
                                 </ul>
                             </li>

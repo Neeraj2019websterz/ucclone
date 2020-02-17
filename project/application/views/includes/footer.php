@@ -71,59 +71,28 @@
 </html>
 <script>
     $(document).ready(function () {
+
         $(".form-2").hide();
     });
 
     $("#next").click(function () {
-        $(".error").html("");
         var firstname = $("input[name='firstname']").val();
+        var id = "#first-name";
+        var fname = nameValidaion(firstname, id)
         var lastname = $("input[name='lastname']").val();
-        var email = $("input[name='email']").val();
-        var Dateofbirth = $("input[name='Dateofbirth']").val();
-        var phoneno = $("input[name='phoneno']").val();
-        //var gender = $("input[name='lastname']").val();
-        var pasword = $("input[name='password']").val();
-        var confirmpasword = $("input[name='confrimpassword']").val();
+        var lname;
+       
 
-        if (firstname == "")
+        if (fname)
         {
-            $("#first-name").html("please enter your  name");
-        } else if (lastname == "")
+            var id1 = "#last-name";
+            lname = nameValidaion(lastname, id1)
+            console.log(lname);
+        }
+        if (fname && lname && emailValidaion() && phoneValidaion() && genderValidation() && passwordvalidation())
         {
-            $("#last-name").html("please enter your Last name");
-
-        } else if (email == "")
-        {
-            $("#email").html("please enter your Email");
-
-        } else if (Dateofbirth == "")
-        {
-            $("#dateofbirth").html("please enter your Date of Birth");
-
-        } else if (phoneno == "")
-        {
-            $("#phone-no").html("please enter your phoneno");
-
-        } else if (pasword == "")
-        {
-            $("#password").html("please enter your password");
-
-        } else if (confirmpasword == "")
-        {
-            $("#confirmpassword").html("please enter your Confirm password");
-
-        } else
-        {
-
-            if (pasword == confirmpasword)
-            {
-                $(".form-1").hide();
-                $(".form-2").show();
-            } else
-            {
-                $("#confirmpassword").html("password does not Match");
-            }
-
+              $(".form-1").hide();
+               $(".form-2").show();
         }
 
     });
@@ -169,6 +138,152 @@
 
     });
 
+    function nameValidaion(name, id)
+    {
 
+        var name_regex = /^[a-zA-Z]+$/;
+        if (name != "")
+        {
+            if (name.length >= 2 && name.length <= 25)
+            {
+                if (!name.match(name_regex)) {
+                    $(id).text("*For your name please use alphabets only *");
+                    return false;
+                } else
+                {
+                    $(id).text("");
+                    return true;
+                }
+            } else
+            {
+                $(id).text("* Minimum length should be 2 charcters and maximum is 25 charcters*");
+                return false;
+            }
+
+        } else
+        {
+            $(id).text("please enter your  name");
+            return false;
+        }
+
+    }
+    function emailValidaion()
+    {
+        var email = $("input[name='email']").val();
+        var name_regex = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
+
+        if (email != "")
+        {
+            if (email.length >= 10 && email.length <= 100)
+            {
+                if (!email.match(name_regex)) {
+                    $("#email").text("*For your name please use alphabets only *");
+                    return false;
+                } else
+                {
+                    $("#email").text("");
+                    return true;
+                }
+            } else
+            {
+                $("#email").text("* Minimum length should be 10 charcters");
+                return false;
+            }
+
+        } else
+        {
+            $("#email").text("please enter your  email");
+            return false;
+        }
+    }
+
+    function phoneValidaion()
+    {
+        var phoneno = $("input[name='phoneno']").val();
+        var name_regex = /[0-9]{10}/;
+
+        if (phoneno != "")
+        {
+            if (phoneno.match(name_regex))
+            {
+                if (phoneno.length == 10) {
+                    $("#phone-no").text("");
+                    return true;
+
+                } else
+                $("#phone-no").text("*length should be 10 charcters");
+                return false;
+                {
+                                    }
+            } else
+            {
+                    $("#phone-no").text("*Enter only digits *");
+                    return false;
+            }
+
+        } else
+        {
+            $("#phone-no").text("please enter your  Contact");
+            return false;
+        }
+    }
+    function genderValidation()
+    {
+        var gender = $("input[name='gender']:checked").val();
+        if (gender != "")
+        {
+            return true;
+        } else
+        {
+            $("#gender").text("please select your gender");
+            return false;
+        }
+
+    }
+
+    function passwordvalidation()
+    {
+        var pasword = $("input[name='password']").val();
+        var confirmpasword = $("input[name='confrimpassword']").val();
+        if (pasword != "")
+        {
+            if (pasword.length >= 6)
+            {
+                  $("#password").text("");
+                if (confirmpasword != "")
+                {
+                    if (pasword == confirmpasword)
+                    {
+                        $("#confirmpassword").text("");
+                        return true;
+                    } else
+                    {
+                        $("#confirmpassword").text("pasword does not match");
+                        return false;
+                    }
+                }
+                else
+                {
+                        $("#confirmpassword").text("please enter your Confirm password");
+                        return false;
+                    
+                }
+            } else
+            {
+                $("#password").text("*pasword length is maximum 6");
+                return false;
+            }
+        } else
+        {
+            $("#password").text("please enter your password");
+
+            return false;
+        }
+    }
+ $('#phone-noo').on('keypress keydown keyup',function(){
+
+    phoneValidaion()
+     
+ });
 
 </script>
