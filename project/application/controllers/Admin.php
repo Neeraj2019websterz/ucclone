@@ -29,12 +29,19 @@ class Admin extends CI_Controller {
         } else {
             $row = $this->AdminModel->checkAdmin($formdata);
             if ($row > 0) {
-                $this->load->view('admin/admin_dashboard');
+                $this->load->view('admin/dashboard');
             } else {
                 $this->session->set_flashdata('error', 'Your Account is Invalid');
                 redirect('admin/secure_login', 'refresh');
             }
         }
     }
+     function services_group() {
+        $this->load->view('admin/service_group');
+    }
+     function add_service_group() {
+        $this->load->view('admin/addservicegroup');
+    }
+    
 
 }

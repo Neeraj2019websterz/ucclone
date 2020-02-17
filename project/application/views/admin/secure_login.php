@@ -43,7 +43,7 @@
             <div class="col-12 ">
                 <div class="col-md-8 col-sm-8 col-12 offset-md-2 offset-sm-1 ">                 
                     <div class="iphone-wrap">
-                        <?php echo form_open('admin/secure_login_validation'); ?>
+                        <?php echo form_open(site_URL('admin/adminlogin')); ?>
                         <div class="card card-signin my-5">
 
                             <div class="card-body">

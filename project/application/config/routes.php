@@ -55,3 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['signup'] = 'homepage/signup';
 $route['test'] = 'homepage/test';
 $route['userdata'] = 'homepage/userformdata';
+$route['admin/dashboard'] = 'admin/admin_dashboard';
+$route['admin/adminlogin'] = 'admin/secure_login_validation';
+$route['admin/service'] = 'admin/services_group';
+$route['admin/createservgrp'] = 'admin/add_service_group';
