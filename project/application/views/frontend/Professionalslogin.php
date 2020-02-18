@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-12 col-lg-6 pt-5">
                     <div class="bg-white w-100 pb-1">
-                        <?php echo form_open('Homepage/secure_login_validation'); ?>
+                        <?php echo form_open('Professionals/Professionalslogin'); ?>
 
                         <div class="card-body pb-5 p-5">
                             <h5 class="card-title text-center">Sign In</h5>

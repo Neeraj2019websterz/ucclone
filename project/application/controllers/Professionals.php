@@ -12,11 +12,35 @@ class Professionals extends CI_Controller
         $this->load->model("Professionalsmodel");
         $this->load->model("Services");
         $this->load->helper("form");
+        $this->load->library('session');
+
     }
 
     public function Professionalslogin()
     {
         $this->load->view('/frontend/Professionalslogin');
+        $this->load->library('form_validation');
+        $formdata = array(
+            'email' => $this->input->post('email'),
+            'password' => $this->input->post('password')
+        );
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        
+        $row = $this->Professionalsmodel->getProfessionalLogindata($formdata);
+                if ($this->form_validation->run() == FALSE) {
+
+        } else {
+            $row = $this->Professionalsmodel->getProfessionalLogindata($formdata);
+            if ($row > 0) {
+            $this->session->set_userdata('email', $formdata['email']);
+           redirect('/Professionals/professionalsDashborad', 'refresh');
+
+            } else {
+                $this->session->set_flashdata('error', 'Your Account is Invalid');
+            }
+        }
+
     }
 
     public function Professionalssignup()
@@ -51,20 +75,26 @@ class Professionals extends CI_Controller
             "password" => $pasword,
             "street_add1" => $address1,
             "street_add2" => $address2,
-            "services_list_id"=> $services,
+            "services_list_id" => $services,
             "city" => $city,
             "state" => $state,
             "country" => $country,
             "gender" => $gender
         ];
-      $res = $this->Professionalsmodel->professionalsInsertFromData($formdata);
+        $res = $this->Professionalsmodel->professionalsInsertFromData($formdata);
         echo $res;
         //       echo "heelo";
     }
-public function professionalsDashborad()
-{
-        $this->load->view('/frontend/professionalsdashborad');
 
-}
+    public function professionalsDashborad()
+    {
+          $email = $this->session->userdata('email');
+
+          $res=$this->Professionalsmodel->getProfessionalUserDetails($email);
+//          print_r($res);
+          $data['res']= $res;
+           $this->load->view('/frontend/professionalsdashborad', $data);
+
+    }
 
 }

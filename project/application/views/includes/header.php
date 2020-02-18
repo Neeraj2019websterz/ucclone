@@ -28,8 +28,8 @@
                             <li class="has-children">
                                 <a href="blog.html" class="nav-link">Provider</a>
                                 <ul class="dropdown">
-                                    <li><a href="blog.html" class="nav-link">Login</a></li>
-                                    <li><a href="blog.html" class="nav-link">Signup</a></li>
+                                    <li><a href="<?php echo site_url('professionals/professionalslogin') ?>" class="nav-link">Login</a></li>
+                                    <li><a href="<?php echo site_url('professionals/professionalssignup') ?>" class="nav-link">Signup</a></li>
                                 </ul>
                             </li>
                               <li class="has-children">

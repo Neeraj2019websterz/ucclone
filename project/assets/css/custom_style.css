@@ -61,3 +61,21 @@
     width: 95%;
     margin: auto;
 }
+input[type=file]::-webkit-file-upload-button {
+    border: 1px solid white;
+    height:30px;
+    margin-top:0px;
+    color:white;
+    background-color: transparent;
+    
+ 
+  }
+  
+input[type=file]{
+    background-color: transparent;
+    color:transparent;  
+ 
+  }
+  aside#colorlib-aside {
+    background: linear-gradient(-45deg, #1391a5, #274685);
+}

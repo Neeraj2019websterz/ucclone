@@ -11,7 +11,7 @@
  *
  * @author SrDev
  */
-class Professionalsmodel  Extends CI_Model
+class Professionalsmodel Extends CI_Model
 {
     public function professionalsInsertFromData($formdata)
     {
@@ -24,14 +24,24 @@ class Professionalsmodel  Extends CI_Model
         }
     }
 
-//    public function getUserlogindata($formdata)
-//    {
-//
-//        $this->db->where("email", $formdata['email']);
-//        $this->db->where("password", $formdata['password']);
-//        $this->db->from('users');
-//        $res = $this->db->count_all_results();
-//        return $res;
-//    }
+    public function getProfessionalLogindata($formdata)
+    {
+
+        $this->db->where("email", $formdata['email']);
+        $this->db->where("password", $formdata['password']);
+        $this->db->from('professionals');
+        $res = $this->db->count_all_results();
+        return $res;
+    }
+
+    public function getProfessionalUserDetails($email)
+    {
+
+        $this->db->where("email", $email);
+        $this->db->from('professionals');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
 
 }

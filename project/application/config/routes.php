@@ -62,4 +62,7 @@ $route['admin/adminlogin'] = 'admin/secure_login_validation';
 $route['admin/service'] = 'admin/services_group';
 $route['admin/createservgrpview'] = 'admin/add_service_group_view';
 $route['admin/createservgrp'] = 'admin/add_service_group';
+$route['professionals/professionalslogin'] = 'Professionals/Professionalslogin';
 $route['professionals/getformdataprofessional'] = 'Professionals/getFormDataProfessional';
+$route['professionals/professionalssignup'] = 'Professionals/Professionalssignup';
+
