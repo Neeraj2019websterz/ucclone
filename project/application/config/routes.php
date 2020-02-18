@@ -68,4 +68,7 @@ $route['admin/subservices'] = 'admin/load_subservices_view';
 $route['admin/subservices'] = 'admin/load_subservices_view';
 $route['admin/createsubservice'] = 'admin/add_sub_service_view';
 $route['admin/createservice'] = 'admin/add_sub_service';
+$route['professionals/professionalslogin'] = 'Professionals/Professionalslogin';
+$route['professionals/getformdataprofessional'] = 'Professionals/getFormDataProfessional';
+$route['professionals/professionalssignup'] = 'Professionals/Professionalssignup';
 
