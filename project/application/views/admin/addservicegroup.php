@@ -12,7 +12,7 @@
         if ($resp) {
             echo '<div class="row">
             <div class="col-md-6"> <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>' . $error . '</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <strong>' . $resp . '</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>  </div></div>';
@@ -26,7 +26,7 @@
                     <form >
                         <div class="form-group">
                             <label >Service Group Name:</label>
-                            <input type="text" class="form-control" placeholder="Enter Service Group Name" id="serviceGroupName" name="serviceGroupName">
+                            <input type="text" class="form-control" placeholder="Enter Service Group Name" id="serviceGroupName" name="serviceGroupName" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

@@ -62,3 +62,10 @@ $route['admin/adminlogin'] = 'admin/secure_login_validation';
 $route['admin/service'] = 'admin/services_group';
 $route['admin/createservgrpview'] = 'admin/add_service_group_view';
 $route['admin/createservgrp'] = 'admin/add_service_group';
+$route['admin/createservcatview'] = 'admin/add_service_category_view';
+$route['admin/createservcat'] = 'admin/add_service_category';
+$route['admin/subservices'] = 'admin/load_subservices_view';
+$route['admin/subservices'] = 'admin/load_subservices_view';
+$route['admin/createsubservice'] = 'admin/add_sub_service_view';
+$route['admin/createservice'] = 'admin/add_sub_service';
+
