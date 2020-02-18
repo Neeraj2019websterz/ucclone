@@ -72,7 +72,7 @@
 <script>
     $(document).ready(function () {
 
-        $(".form-2").hide();
+       $(".form-2").hide();
     });
 
     $("#next").click(function () {
@@ -285,5 +285,53 @@
     phoneValidaion()
      
  });
+$("#vender-signup").click(function (e)
+    {
+        e.preventDefault();
+        $(".error").html("");
+        var address1 = $("input[name='address1']").val();
+        var address2 = $("input[name='address2']").val();
+        var services = $("#services option:selected").val();
+        var state = $("#state-1 option:selected").val();
+        var country = $("#country-1 option:selected").val();
+        var city = $("#city-1 option:selected").val();
+        console.log(city);
+        if (address1 == "")
+        {
+            $("#address1").html("please enter your  address");
+        } else if (address2 == "")
+        {
+            $("#address2").html("please enter your address");
+        } else if (services == "0")
+        {
+            $("#services").html("please enter your services");
+        }  else if (city == "0")
+        {
+            $("#city").html("please enter your City");
+        }
+        
+
+
+        else if (state == "0")
+        {
+            $("#state").html("please enter your state");
+        } else if (country == "0")
+        {
+            $("#country").html("please enter your country");
+        } else
+        {
+
+            //    console.log($("#venderform-signup").serialize());
+            $.ajax({
+                type: "POST",
+                url: "<?php echo site_url('professionals/getformdataprofessional'); ?>",
+                data: $("#venderform-signup").serialize(),
+                success: function (response) {
+
+                   console.log(response);
+                }
+            });
+        }
+        });
 
 </script>

@@ -106,12 +106,5 @@ class Homepage extends CI_Controller
         $this->load->view('/frontend/test', $data);
        
     }
-    public function Venderlogin()
-    {
-        $this->load->view('/frontend/Venderlogin');
-    }
-    public function Vendersignup()
-    {
-        $this->load->view('/frontend/Vendersignup');
-    }
+  
 }

@@ -15,3 +15,9 @@ nav.sb-topnav.navbar.navbar-expand.navbar-dark.bg-dark {
     text-shadow: 2px 2px 5px #ffff;
     transition-duration: 1s;
 }
+.prfesionals-detalis
+{
+    border: red 2px solid !important;
+    width: 95%;
+    margin: auto;
+}

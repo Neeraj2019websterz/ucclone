@@ -61,3 +61,4 @@ $route['admin/dashboard'] = 'admin/admin_dashboard';
 $route['admin/adminlogin'] = 'admin/secure_login_validation';
 $route['admin/service'] = 'admin/services_group';
 $route['admin/createservgrp'] = 'admin/add_service_group';
+$route['professionals/getformdataprofessional'] = 'Professionals/getFormDataProfessional';
