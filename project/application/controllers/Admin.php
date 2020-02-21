@@ -9,6 +9,7 @@ class Admin extends CI_Controller {
         $this->load->helper("url");
         $this->load->helper('form');
         $this->load->model('admin/AdminModel');
+        $this->load->library('session');
     }
 
     function secure_login() {
@@ -18,8 +19,8 @@ class Admin extends CI_Controller {
     function secure_login_validation() {
         $this->load->library('form_validation');
         $formdata = array(
-            'email' => $this->input->post('email'),
-            'password' => $this->input->post('password')
+            'email' => htmlspecialchars($this->input->post('email')) ,
+            'password' => htmlspecialchars($this->input->post('password'))
         );
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -29,6 +30,7 @@ class Admin extends CI_Controller {
         } else {
             $row = $this->AdminModel->checkAdmin($formdata);
             if ($row > 0) {
+                $this->session->set_userdata(array('user' => $formdata['email']));
                 $this->load->view('admin/admin_dashboard');
             } else {
                 $this->session->set_flashdata('error', 'Your Account is Invalid');
@@ -133,6 +135,12 @@ class Admin extends CI_Controller {
             $data['service_category'] = $this->Services->getservicescatagery();
             $this->load->view('admin/createsubservice', $data);
         }
+    }
+     public function logout()
+    {
+        $this->session->unset_userdata('user');
+        $this->session->sess_destroy();
+        redirect("admin/secure_login");
     }
 
 }

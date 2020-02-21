@@ -16,7 +16,7 @@
 
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -24,6 +24,7 @@
                                 <th>Service Category</th>
                                 <th>Service fees</th>
                                 <th>Convenience fees</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -33,6 +34,7 @@
                                 <th>Service Category</th>
                                 <th>Service fees</th>
                                 <th>Convenience fees</th>
+                                <th>Action</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -44,6 +46,7 @@
                                                 <td>' . $value->services_categery_list . '</td>
                                                 <td>' . $value->service_fee . '</td>
                                                 <td>' . $value->convenience_fee . '</td>
+                                                <td><button class="btn btn-primary">Edit</button></td>
                                             </tr>';
                             }
                             ?>
