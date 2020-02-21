@@ -25,6 +25,7 @@ class Services Extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('services_categery');
+        $this->db->join('services_group','services_categery.services_group_id=services_group.services_group_id');
         $query = $this->db->get();
 
         return $query->result();

@@ -45,6 +45,9 @@ class Admin extends CI_Controller {
         $data['resp'] = null;
         $data['error'] = null;
         $data['row'] = $this->AdminModel->getServicesList();
+//        
+//        echo "<pre>";
+//        print_r($data); die;
         $this->load->view('admin/service_group', $data);
     }
 

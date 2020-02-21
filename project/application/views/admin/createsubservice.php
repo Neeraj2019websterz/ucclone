@@ -1,4 +1,4 @@
-<?php $this->load->view("includes/adminheader") ?>
+<?php $this->load->view("includes/adminheader") ;?>
 <main>
     <div class="container-fluid">
         <h1 class="mt-4">Services</h1>
@@ -21,13 +21,14 @@
 
         <div class="row">
             <div class="col-md-6">
+                <?php if (!empty($service_category)){?>
                 <?php echo form_open(site_URL('admin/createservice')); ?>
                 <form >
                     <div class="form-group">
                         <label >Select Service Category:</label>
                         <select class="form-control" name="servicecategory">
-                            <?PHP foreach($service_category as $key => $value){
-                                echo '<option value="'.$value->services_catagery_id.'">'.$value->services_categery_list.'</option>';
+                            <?PHP foreach($service_category as $key => $value){     
+                                echo '<option value="'.$value->services_catagery_id.'">'.$value->services_categery_list.' ('.$value->services_group.')'.'</option>';
                             }?>                            
                         </select>
                     </div>
@@ -45,7 +46,12 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-                <?php echo form_close(); ?>
+                <?php echo form_close(); 
+                }
+                else {
+                    echo '<div class="col-md-12">No Service category data found.Please create Service Category first. <a href="'.site_URL('admin/service').'">Follow Link</a></div>';
+                }
+                ?>
             </div>
         </div>
     </div>

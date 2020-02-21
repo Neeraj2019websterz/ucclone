@@ -44,17 +44,30 @@ class AdminModel Extends CI_Model {
     }
 
     function getServicesList() {
-        $sql = "SELECT `services_group`.`services_group`, `services_categery`.`services_categery_list`,`sub_services_list`.`services_list`,`sub_services_list`.`service_fee` , `sub_services_list`.`convenience_fee` FROM `services_group` JOIN services_categery ON services_group.services_group_id=services_categery.services_group_id
-JOIN sub_services_list ON services_categery.services_catagery_id=sub_services_list.services_catagery_id ";
+//        $sql = "SELECT `services_group`.`services_group`, `services_categery`.`services_categery_list`,`sub_services_list`.`services_list`,`sub_services_list`.`service_fee` , `sub_services_list`.`convenience_fee` FROM `services_group` JOIN services_categery ON services_group.services_group_id=services_categery.services_group_id
+//JOIN sub_services_list ON services_categery.services_catagery_id=sub_services_list.services_catagery_id ";
+//
+//        $query = $this->db->query($sql);
+//        $result = $query->result_array();
+//
+//        $serviceArray = [];
+//        foreach ($result as $value) {
+//            $serviceArray[$value['services_group']] [$value['services_categery_list']][] = [
+//                $value['services_list'], $value['service_fee'], $value['convenience_fee']];
+//        }
+        
+$query = $this->db->get('services_group');
+$serviceArray ['servGroup']= $query->result() ;
 
-        $query = $this->db->query($sql);
-        $result = $query->result_array();
+//$query1 = $this->db->get('services_categery');
+//$serviceArray ['servCategory']= $query1->result() ;
+$this->db->select('*');
+$this->db->join('services_categery', 'sub_services_list.services_catagery_id=services_categery.services_catagery_id');
+$query2 = $this->db->get('sub_services_list');
+$serviceArray ['servList']= $query2->result() ;
 
-        $serviceArray = [];
-        foreach ($result as $value) {
-            $serviceArray[$value['services_group']] [$value['services_categery_list']][] = [
-                $value['services_list'], $value['service_fee'], $value['convenience_fee']];
-        }
+//             echo "<pre>";
+//        print_r($serviceArray);die;
         return $serviceArray;
     }
 

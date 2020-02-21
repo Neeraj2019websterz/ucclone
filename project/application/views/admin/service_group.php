@@ -8,7 +8,7 @@
             <li class="breadcrumb-item active">Service Group</li>
         </ol>
         <div class="row">
-            <div class="col-md-12"><a href="<?PHP echo site_URL('admin/createservgrpview'); ?>"><button class="btn btn-primary">Create service group</button></a>&nbsp<?PHP if(!empty($row)){ ?><a href="<?PHP echo site_URL('admin/createservcatview');?>"><button class="btn btn-primary">Create service category</button></a><?PHP }?></div>            
+            <div class="col-md-12"><a href="<?PHP echo site_URL('admin/createservgrpview'); ?>"><button class="btn btn-primary">Create service group</button></a>&nbsp<?PHP // if(!empty($row)){   ?><a href="<?PHP echo site_URL('admin/createservcatview'); ?>"><button class="btn btn-primary">Create service category</button></a><?PHP // }  ?></div>            
         </div>
         <div class="col-md-12 col-12 col-lg-12"><hr></div>
         <?PHP
@@ -23,51 +23,39 @@
         ?>
         <div class="row">
             <div class="col-md-12">
-                <?PHP if(!empty($row)){ ?>
-
-                <div id="accordion">
-                    <?php
-                    $count = 0;
-                    foreach ($row as $key => $value) {
-                        ?>
-                        <div class="card">
-                            <div class="card-header">
-                                <a class="card-link" data-toggle="collapse" href="#collapse<?PHP echo '_'.$count; ?>">
-                                    <?PHP echo $key; ?>
-                                </a>
-                            </div>
-                            <div id="collapse<?PHP echo '_' . $count; ?>" class="collapse" data-parent="#accordion">
-                                <div class="card-body">
-                                    <table class="table table-striped table-bordered table-responsive-sm">
-                                        <tr>
-                                            <th>Service Name</th>
-                                            <th>Category</th>
-                                            <th>Service fee</th>
-                                            <th>Convenience fee</th>
-                                        </tr>
-                                        <?PHP
-                                        foreach ($value as $key2 => $value2) {
-
-                                            foreach ($value2 as $key3 => $value3) {
-
-                                                echo '<tr>
-                                            <td>' . $value3[0] . '</td>
-                                            <td>' . $key2 . '</td>
-                                            <td>' . $value3[1] . '</td>
-                                            <td>' . $value3[2] . '</td>
-                                        </tr>';
-                                            }
-                                        }
-                                        ?>                                        
-
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    <?PHP  $count++;} ?>
-
-                </div>
-                <?PHP }else{ echo '<div><p>No data information available</p></div>';}?>
+                <?PHP foreach ($row['servGroup'] as $value) { ?>
+                    <h3><?PHP echo $value->services_group; ?></h3>
+                    <?PHP
+                    if (!empty($row['servList'])) {
+                        echo '<table class="table table-bordered table-striped text-center"><thead><th>Id</th><th>Service Category</th><th>Service Name</th><th>Service Fee</th><th>Convenience fee</th><th>Action</th></thead><tbody>';
+                        $count = 1;
+                        foreach ($row['servList'] as $value2) {
+                            if ($value->services_group_id == $value2->services_group_id) {
+                                echo "<tr>";
+                                echo "<td>" . $count . "</td>";
+                                echo "<td>" . $value2->services_categery_list . "</td>";
+                                echo "<td>" . $value2->services_list . "</td>";
+                                echo "<td>" . $value2->service_fee . "</td>";
+                                echo "<td>" . $value2->convenience_fee . "</td>";
+                                echo "<td><button class='btn btn-primary'>Edit</button></td>";
+                                echo "</tr>";
+                                $count++;
+                            }                          
+                            
+                        }
+                         if($count ==1){
+                                echo '<tr><td colspan="6">No data available</td></tr>';
+                            }
+                        echo '</tbody></table>';
+                    } else {
+                        echo '<table class="table table-bordered table-striped"><thead><th>Id</th><th>Service Category</th><th>Service Name</th><th>Service Fee</th><th>Convenience fee</th><th>Action</th></thead><tbody>';
+                        echo "<tr>";
+                        echo "<td colspan='6'>No Data available</td>";
+                        echo "</tr>";
+                        echo '</tbody></table>';
+                    }
+                }
+                ?>
             </div>            
         </div>
     </div>
