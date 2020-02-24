@@ -21,3 +21,14 @@ nav.sb-topnav.navbar.navbar-expand.navbar-dark.bg-dark {
     width: 95%;
     margin: auto;
 }
+.profile-img
+{
+margin: auto;
+    position: relative;
+    /* top: -110px; */
+    /* margin-bottom: -100px; */
+    width: 180px;
+    height: 180px;
+    border-radius: 120px;
+    overflow: hidden;
+}

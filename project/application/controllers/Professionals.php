@@ -10,10 +10,10 @@ class Professionals extends CI_Controller
         $this->load->helper("url");
         $this->load->model("User");
         $this->load->model("Professionalsmodel");
+        $this->load->model("Profilepicmodel");
         $this->load->model("Services");
         $this->load->helper("form");
         $this->load->library('session');
-
     }
 
     public function Professionalslogin()
@@ -26,21 +26,19 @@ class Professionals extends CI_Controller
         );
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
-        
+
         $row = $this->Professionalsmodel->getProfessionalLogindata($formdata);
-                if ($this->form_validation->run() == FALSE) {
+        if ($this->form_validation->run() == FALSE) {
 
         } else {
             $row = $this->Professionalsmodel->getProfessionalLogindata($formdata);
             if ($row > 0) {
-            $this->session->set_userdata('email', $formdata['email']);
-           redirect('/Professionals/professionalsDashborad', 'refresh');
-
+                $this->session->set_userdata('email', $formdata['email']);
+                redirect('/Professionals/professionalsDashborad', 'refresh');
             } else {
                 $this->session->set_flashdata('error', 'Your Account is Invalid');
             }
         }
-
     }
 
     public function Professionalssignup()
@@ -88,12 +86,58 @@ class Professionals extends CI_Controller
 
     public function professionalsDashborad()
     {
-          $email = $this->session->userdata('email');
+        $email = $this->session->userdata('email');
 
-          $res=$this->Professionalsmodel->getProfessionalUserDetails($email);
+        $res = $this->Professionalsmodel->getProfessionalUserDetails($email);
 //          print_r($res);
-          $data['res']= $res;
-           $this->load->view('/frontend/professionalsdashborad', $data);
+        $data['res'] = $res;
+        $data['imgpath'] = PROFESIONAL_PROFILE_PIC_PATH;
+        $this->load->view('/frontend/professionalsdashborad', $data);
+    }
+
+    public function professionalsProfile()
+    {
+        echo"heelo";
+        $email = $this->session->userdata('email');
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['upload_path'] = FCPATH . 'assets\profilepic\professional';
+        $config['encrypt_name'] = true;
+        $config['width'] = 313;
+        $config['height'] = 170;
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('profilepic')) {
+            $this->session->set_flashdata('message', ' ');
+        } else {
+
+            $picName = $this->upload->data();
+            print_r($picName['file_name']);
+            $this->Profilepicmodel->profilePicProfessionalUpload($email, $picName['file_name']);
+
+
+            $this->session->set_flashdata('message', 'Profile Picture Uploaded Successfully');
+        }
+
+        redirect(site_url('professionals/professionalsdashborad'), 'refresh');
+    }
+
+    public function updateProfessionalProfileForm()
+    {
+        $email = $this->session->userdata('email');
+
+        $res = $this->Professionalsmodel->getProfessionalUserDetails($email);
+        $getservicescatagery = $this->Services->getservicescatagery();
+
+        $data['res'] = $res;
+        $data['services'] = $getservicescatagery;
+        $email = $this->session->userdata('email');
+        $this->load->view('frontend/test', $data);
+    }
+
+    public function updateProfileData()
+    {
+        $email = $this->session->userdata('email');
+        echo $email;
 
     }
 

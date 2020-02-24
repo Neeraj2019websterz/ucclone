@@ -72,4 +72,8 @@ $route['admin/createservice'] = 'admin/add_sub_service';
 $route['professionals/professionalslogin'] = 'Professionals/Professionalslogin';
 $route['professionals/getformdataprofessional'] = 'Professionals/getFormDataProfessional';
 $route['professionals/professionalssignup'] = 'Professionals/Professionalssignup';
+$route['professionals/professionalsdashborad'] = 'Professionals/professionalsDashborad';
+$route['professionals/professionalsprofile'] = 'Professionals/professionalsProfile';
+$route['professionals/updateprofessionalprofileform'] = 'Professionals/updateProfessionalProfileForm';
+$route['professionals/updateprofiledata'] = 'Professionals/updateProfileData';
 
