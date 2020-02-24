@@ -72,4 +72,5 @@ $route['admin/createservice'] = 'admin/add_sub_service';
 $route['professionals/professionalslogin'] = 'Professionals/Professionalslogin';
 $route['professionals/getformdataprofessional'] = 'Professionals/getFormDataProfessional';
 $route['professionals/professionalssignup'] = 'Professionals/Professionalssignup';
+$route['admin/editgroup/(:any)'] = 'admin/edit_groupname/$1';
 
