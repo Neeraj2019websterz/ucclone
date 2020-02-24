@@ -76,4 +76,5 @@ $route['professionals/professionalsdashborad'] = 'Professionals/professionalsDas
 $route['professionals/professionalsprofile'] = 'Professionals/professionalsProfile';
 $route['professionals/updateprofessionalprofileform'] = 'Professionals/updateProfessionalProfileForm';
 $route['professionals/updateprofiledata'] = 'Professionals/updateProfileData';
+$route['admin/editgroup/(:any)'] = 'admin/edit_groupname/$1';
 

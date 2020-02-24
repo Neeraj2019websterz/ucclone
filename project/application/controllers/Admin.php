@@ -19,7 +19,7 @@ class Admin extends CI_Controller {
     function secure_login_validation() {
         $this->load->library('form_validation');
         $formdata = array(
-            'email' => htmlspecialchars($this->input->post('email')) ,
+            'email' => htmlspecialchars($this->input->post('email')),
             'password' => htmlspecialchars($this->input->post('password'))
         );
         $this->form_validation->set_rules('email', 'Email', 'required');
@@ -136,11 +136,27 @@ class Admin extends CI_Controller {
             $this->load->view('admin/createsubservice', $data);
         }
     }
-     public function logout()
-    {
+
+    function logout() {
         $this->session->unset_userdata('user');
         $this->session->sess_destroy();
         redirect("admin/secure_login");
+    }
+
+    function edit_groupname($groupid) {
+        $gid = $groupid;
+        $formdata = array(
+            'services_group' => $this->input->post('updatedServName'),
+        );
+        $resp = $this->AdminModel->serviceGroupNameUpdate($gid, $formdata);
+        
+        if ($resp['status']) {
+            
+            redirect('admin/service');
+        } else {
+            echo $data['error'] = $resp['message'];            
+            redirect('admin/service', $data);
+        }
     }
 
 }

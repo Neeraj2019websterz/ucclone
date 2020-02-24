@@ -8,7 +8,7 @@
             <li class="breadcrumb-item active">Service Group</li>
         </ol>
         <div class="row">
-            <div class="col-md-12"><a href="<?PHP echo site_URL('admin/createservgrpview'); ?>"><button class="btn btn-primary">Create service group</button></a>&nbsp<?PHP // if(!empty($row)){   ?><a href="<?PHP echo site_URL('admin/createservcatview'); ?>"><button class="btn btn-primary">Create service category</button></a><?PHP // }  ?></div>            
+            <div class="col-md-12"><a href="<?PHP echo site_URL('admin/createservgrpview'); ?>"><button class="btn btn-primary">Create service group</button></a>&nbsp<?PHP // if(!empty($row)){     ?><a href="<?PHP echo site_URL('admin/createservcatview'); ?>"><button class="btn btn-primary">Create service category</button></a><?PHP // }    ?></div>            
         </div>
         <div class="col-md-12 col-12 col-lg-12"><hr></div>
         <?PHP
@@ -24,7 +24,10 @@
         <div class="row">
             <div class="col-md-12">
                 <?PHP foreach ($row['servGroup'] as $value) { ?>
-                    <h3><?PHP echo $value->services_group; ?></h3>
+                    <div class="row">
+                        <h3 class="float-left"><?PHP echo $value->services_group; ?> </h3>
+              <button  class="btn"  onclick="editsgrouplink(<?PHP echo $value->services_group_id?>,'<?PHP echo $value->services_group?>')" >Edit</button>
+                    </div>
                     <?PHP
                     if (!empty($row['servList'])) {
                         echo '<table class="table table-bordered table-striped text-center"><thead><th>Id</th><th>Service Category</th><th>Service Name</th><th>Service Fee</th><th>Convenience fee</th><th>Action</th></thead><tbody>';
@@ -40,12 +43,11 @@
                                 echo "<td><button class='btn btn-primary'>Edit</button></td>";
                                 echo "</tr>";
                                 $count++;
-                            }                          
-                            
-                        }
-                         if($count ==1){
-                                echo '<tr><td colspan="6">No data available</td></tr>';
                             }
+                        }
+                        if ($count == 1) {
+                            echo '<tr><td colspan="6">No Service available</td></tr>';
+                        }
                         echo '</tbody></table>';
                     } else {
                         echo '<table class="table table-bordered table-striped"><thead><th>Id</th><th>Service Category</th><th>Service Name</th><th>Service Fee</th><th>Convenience fee</th><th>Action</th></thead><tbody>';
@@ -60,4 +62,26 @@
         </div>
     </div>
 </main>
+<div class="modal" id="editgroupname">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Group Name</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <?PHP echo form_open();?>
+            <div class="modal-body">                
+            </div>
+            <?PHP echo form_close();?>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    var formaction= "<?PHP echo site_url('admin/editgroup/');?>";
+</script>
 <?php $this->load->view("includes/adminfooter") ?>

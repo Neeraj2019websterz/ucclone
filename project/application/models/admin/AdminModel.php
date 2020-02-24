@@ -55,16 +55,16 @@ class AdminModel Extends CI_Model {
 //            $serviceArray[$value['services_group']] [$value['services_categery_list']][] = [
 //                $value['services_list'], $value['service_fee'], $value['convenience_fee']];
 //        }
-        
-$query = $this->db->get('services_group');
-$serviceArray ['servGroup']= $query->result() ;
+
+        $query = $this->db->get('services_group');
+        $serviceArray ['servGroup'] = $query->result();
 
 //$query1 = $this->db->get('services_categery');
 //$serviceArray ['servCategory']= $query1->result() ;
-$this->db->select('*');
-$this->db->join('services_categery', 'sub_services_list.services_catagery_id=services_categery.services_catagery_id');
-$query2 = $this->db->get('sub_services_list');
-$serviceArray ['servList']= $query2->result() ;
+        $this->db->select('*');
+        $this->db->join('services_categery', 'sub_services_list.services_catagery_id=services_categery.services_catagery_id');
+        $query2 = $this->db->get('sub_services_list');
+        $serviceArray ['servList'] = $query2->result();
 
 //             echo "<pre>";
 //        print_r($serviceArray);die;
@@ -111,8 +111,8 @@ $serviceArray ['servList']= $query2->result() ;
         $query = $this->db->get();
         return $query->result();
     }
-    
-    public function addService($formdata) {      
+
+    public function addService($formdata) {
         $this->db->where('services_list', $formdata['services_list']);
         $this->db->where('services_catagery_id', $formdata['services_catagery_id']);
         $q = $this->db->get('sub_services_list');
@@ -142,7 +142,28 @@ $serviceArray ['servList']= $query2->result() ;
                 return $resp;
             }
         }
+    }
+
+    public function serviceGroupNameUpdate($id, $formdata) {
+
+        $this->db->set($formdata);
+        $this->db->where('services_group_id', $id);
+        $query = $this->db->update('services_group');
         
+        if ($query) {
+
+                $resp = array(
+                    'status' => true,
+                    'message' => 'Service Group Updated',
+                );
+                return $resp;
+            } else {
+                $resp = array(
+                    'status' => false,
+                    'message' => 'Service Group edit failure',
+                );
+                return $resp;
+            }
     }
 
 }
