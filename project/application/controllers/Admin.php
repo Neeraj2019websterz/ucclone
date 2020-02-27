@@ -39,7 +39,9 @@ class Admin extends CI_Controller {
         }
     }
 
-    function admin_dashboard() {
+    function admin_dashboard() {        
+        $data['row'] = $this->AdminModel->getAllUsers();
+        echo '<pre>';
         $this->load->view('admin/admin_dashboard');
     }
 

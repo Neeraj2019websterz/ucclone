@@ -149,21 +149,35 @@ class AdminModel Extends CI_Model {
         $this->db->set($formdata);
         $this->db->where('services_group_id', $id);
         $query = $this->db->update('services_group');
-        
+
         if ($query) {
 
-                $resp = array(
-                    'status' => true,
-                    'message' => 'Service Group Updated',
-                );
-                return $resp;
-            } else {
-                $resp = array(
-                    'status' => false,
-                    'message' => 'Service Group edit failure',
-                );
-                return $resp;
-            }
+            $resp = array(
+                'status' => true,
+                'message' => 'Service Group Updated',
+            );
+            return $resp;
+        } else {
+            $resp = array(
+                'status' => false,
+                'message' => 'Service Group edit failure',
+            );
+            return $resp;
+        }
+    }
+
+    public function getAllUsers() {
+        $this->db->select('*');
+        $this->db->from('professionals');
+        $query = $this->db->get();
+        $row['professionals'] = $query->result();
+        
+             
+        $this->db->select('*');
+        $this->db->from('users');
+        $query2 = $this->db->get();
+        $row['users'] = $query2->result();
+        return $row;        
     }
 
 }

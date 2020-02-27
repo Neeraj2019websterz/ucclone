@@ -69,10 +69,10 @@
                 <h4 class="modal-title">Edit Group Name</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <?PHP echo form_open();?>
+          
             <div class="modal-body">                
             </div>
-            <?PHP echo form_close();?>
+            
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
