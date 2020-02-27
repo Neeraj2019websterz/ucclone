@@ -41,7 +41,7 @@
                             <?PHP
                             foreach ($service_list as $key => $value) {
                                 echo '<tr>
-                                                <td>' . $value->id . '</td>
+                                                <td>' . $value->services_list_id. '</td>
                                                 <td>' . $value->services_list . '</td>
                                                 <td>' . $value->services_categery_list . '</td>
                                                 <td>' . $value->service_fee . '</td>

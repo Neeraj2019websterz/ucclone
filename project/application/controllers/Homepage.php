@@ -10,11 +10,16 @@ class Homepage extends CI_Controller
         $this->load->helper("url");
         $this->load->model("User");
         $this->load->model("Services");
+        $this->load->model('admin/Image');
     }
 
     public function index()
     {
-        $this->load->view('welcome_message');
+        $imagename = $this->Image->getBannerName();
+        $data['imgname'] = $imagename;
+
+        $this->load->view('welcome_message', $data);
+       
     }
 
     public function signup()
@@ -25,7 +30,7 @@ class Homepage extends CI_Controller
 
     public function userlogin()
     {
-
+   
         $this->load->view('/frontend/userlogin');
     }
 
@@ -58,8 +63,6 @@ class Homepage extends CI_Controller
             "gender" => $gender
         ];
         $res = $this->User->insertUserData($formdata);
-
-        return print_r($formdata);
     }
 
     function secure_login_validation()
@@ -76,12 +79,14 @@ class Homepage extends CI_Controller
             
         } else {
             $row = $this->User->getUserlogindata($formdata);
-            
+
             if ($row > 0) {
                 $getservicesgroup = $this->Services->getservicesgroup();
                 $getservicescatagery = $this->Services->getservicescatagery();
                 $data['getservicesgroup'] = $getservicesgroup;
                 $data['getservicescatagery'] = $getservicescatagery;
+                $imagename = $this->Image->getBannerName();
+                $data['imgname'] = $imagename;
                 $this->load->view('/frontend/Userservices', $data);
             } else {
                 $this->session->set_flashdata('error', 'Your Account is Invalid');
@@ -99,12 +104,13 @@ class Homepage extends CI_Controller
         $data['getservicescatagery'] = $getservicescatagery;
         $this->load->view('/frontend/test', $data);
     }
-   public function Subservices($id)
+
+    public function Subservices($id)
     {
-       $res=$this->Services->getServicesList($id);
+        $res = $this->Services->getServicesList($id);
         $data['res'] = $res;
-        $this->load->view('/frontend/test', $data);
-       
+        echo '<pre>';
+        print_r($data);
     }
-  
+
 }

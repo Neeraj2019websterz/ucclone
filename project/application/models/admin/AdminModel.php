@@ -1,8 +1,9 @@
 <?php
 
-class AdminModel Extends CI_Model {
-
-    function checkAdmin($formdata) {
+class AdminModel Extends CI_Model
+{
+    function checkAdmin($formdata)
+    {
 
         $this->db->where("email", $formdata['email']);
         $this->db->where("password", $formdata['password']);
@@ -11,7 +12,8 @@ class AdminModel Extends CI_Model {
         return $res;
     }
 
-    function addServiceGroup($formdata) {
+    function addServiceGroup($formdata)
+    {
 
         $this->db->where('services_group', $formdata['services_group']);
         $q = $this->db->get('services_group');
@@ -43,7 +45,8 @@ class AdminModel Extends CI_Model {
         }
     }
 
-    function getServicesList() {
+    function getServicesList()
+    {
 //        $sql = "SELECT `services_group`.`services_group`, `services_categery`.`services_categery_list`,`sub_services_list`.`services_list`,`sub_services_list`.`service_fee` , `sub_services_list`.`convenience_fee` FROM `services_group` JOIN services_categery ON services_group.services_group_id=services_categery.services_group_id
 //JOIN sub_services_list ON services_categery.services_catagery_id=sub_services_list.services_catagery_id ";
 //
@@ -71,7 +74,8 @@ class AdminModel Extends CI_Model {
         return $serviceArray;
     }
 
-    function addServiceCategory($formdata) {
+    function addServiceCategory($formdata)
+    {
 
         $this->db->where('services_group_id', $formdata['services_group_id']);
         $this->db->where('services_categery_list', $formdata['services_categery_list']);
@@ -104,7 +108,8 @@ class AdminModel Extends CI_Model {
         }
     }
 
-    function getSubServicesList() {
+    function getSubServicesList()
+    {
         $this->db->select('*');
         $this->db->join('services_categery', 'sub_services_list.services_catagery_id = services_categery.services_catagery_id');
         $this->db->from('sub_services_list');
@@ -112,7 +117,8 @@ class AdminModel Extends CI_Model {
         return $query->result();
     }
 
-    public function addService($formdata) {
+    public function addService($formdata)
+    {
         $this->db->where('services_list', $formdata['services_list']);
         $this->db->where('services_catagery_id', $formdata['services_catagery_id']);
         $q = $this->db->get('sub_services_list');
@@ -144,7 +150,8 @@ class AdminModel Extends CI_Model {
         }
     }
 
-    public function serviceGroupNameUpdate($id, $formdata) {
+    public function serviceGroupNameUpdate($id, $formdata)
+    {
 
         $this->db->set($formdata);
         $this->db->where('services_group_id', $id);
@@ -166,18 +173,41 @@ class AdminModel Extends CI_Model {
         }
     }
 
-    public function getAllUsers() {
+    public function getAllUsers()
+    {
         $this->db->select('*');
         $this->db->from('professionals');
         $query = $this->db->get();
         $row['professionals'] = $query->result();
-        
-             
+
+
         $this->db->select('*');
         $this->db->from('users');
         $query2 = $this->db->get();
         $row['users'] = $query2->result();
-        return $row;        
+        return $row;
+    }
+
+    public function imageupload($services, $imagename)
+    {
+        $data = array(
+            'services_image' => $imagename
+        );
+
+        $this->db->where('services_catagery_id', $services);
+        $query = $this->db->update('services_categery', $data);
+    }
+
+    public function getservicesdata()
+    {
+        $this->db->select('*');
+        $this->db->from('services_categery');
+        $this->db->where('status', 0);
+        $this->db->where('services_image !=', '');
+        $query = $this->db->get();
+
+
+        return $query->result();
     }
 
 }

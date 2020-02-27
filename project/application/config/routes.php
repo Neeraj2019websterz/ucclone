@@ -75,6 +75,10 @@ $route['professionals/professionalssignup'] = 'Professionals/Professionalssignup
 $route['professionals/professionalsdashborad'] = 'Professionals/professionalsDashborad';
 $route['professionals/professionalsprofile'] = 'Professionals/professionalsProfile';
 $route['professionals/updateprofessionalprofileform'] = 'Professionals/updateProfessionalProfileForm';
-$route['professionals/updateprofiledata'] = 'Professionals/updateProfileData';
+//$route['professionals/updateprofiledata'] = 'Professionals/updateProfileData';
+$route['professionals/updateprofessionalprofileform'] = 'Professionals/updateProfessionalProfileForm';
 $route['admin/editgroup/(:any)'] = 'admin/edit_groupname/$1';
+$route['admin/slider'] = 'admin/slider';
+$route['admin/servicesbanner'] = 'admin/servicesBanner';
+$route['admin/admin/uploadservicesimage'] = 'admin/uploadServicesImage';
 

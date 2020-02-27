@@ -44,4 +44,15 @@ class Professionalsmodel Extends CI_Model
         return $query->result();
     }
 
+    public function updateProfessionalUserDetails($email, $formdata)
+    {
+
+     //    $this->db->from('');
+       
+        $this->db->where('email', $email);
+       $query= $this->db->update('professionals', $formdata);
+
+     return $query;
+    }
+
 }

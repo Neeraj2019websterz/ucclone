@@ -12,6 +12,8 @@ class Professionals extends CI_Controller
         $this->load->model("Professionalsmodel");
         $this->load->model("Profilepicmodel");
         $this->load->model("Services");
+        $this->load->model("City");
+        $this->load->model("State");
         $this->load->helper("form");
         $this->load->library('session');
     }
@@ -32,7 +34,9 @@ class Professionals extends CI_Controller
 
         } else {
             $row = $this->Professionalsmodel->getProfessionalLogindata($formdata);
+
             if ($row > 0) {
+                print_r($row);
                 $this->session->set_userdata('email', $formdata['email']);
                 redirect('/Professionals/professionalsDashborad', 'refresh');
             } else {
@@ -45,7 +49,11 @@ class Professionals extends CI_Controller
     {
         // $this->load->view('/frontend/Vendersignup');
         $getservicescatagery = $this->Services->getservicescatagery();
+        $city = $this->City->getCity();
+        $state = $this->State->getState();
         $data['services'] = $getservicescatagery;
+        $data['city'] = $city;
+        $data['state'] = $state;
         $this->load->view('/frontend/Professionalssignup', $data);
     }
 
@@ -64,6 +72,7 @@ class Professionals extends CI_Controller
         $state = $this->input->post('state');
         $country = $this->input->post('country');
         $gender = $this->input->post('gender');
+
         $formdata = [
             "first_name" => $firstname,
             "last_name" => $lastname,
@@ -97,7 +106,6 @@ class Professionals extends CI_Controller
 
     public function professionalsProfile()
     {
-        echo"heelo";
         $email = $this->session->userdata('email');
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['upload_path'] = FCPATH . 'assets\profilepic\professional';
@@ -105,7 +113,6 @@ class Professionals extends CI_Controller
         $config['width'] = 313;
         $config['height'] = 170;
         $this->load->library('upload', $config);
-
         if (!$this->upload->do_upload('profilepic')) {
             $this->session->set_flashdata('message', ' ');
         } else {
@@ -124,21 +131,51 @@ class Professionals extends CI_Controller
     public function updateProfessionalProfileForm()
     {
         $email = $this->session->userdata('email');
-
+        $city = $this->City->getCity();
+        $state = $this->State->getState();
         $res = $this->Professionalsmodel->getProfessionalUserDetails($email);
         $getservicescatagery = $this->Services->getservicescatagery();
-
         $data['res'] = $res;
         $data['services'] = $getservicescatagery;
+        $data['city'] = $city;
+        $data['state'] = $state;
         $email = $this->session->userdata('email');
-        $this->load->view('frontend/test', $data);
+        $this->load->view('frontend/Professionalsupdateform', $data);
     }
 
     public function updateProfileData()
     {
-        $email = $this->session->userdata('email');
-        echo $email;
+        $emails = $this->session->userdata('email');
+        $firstname = $this->input->post('nameproffesional');
+        $phoneNo = $this->input->post('phoneproffessional');
+        $address1 = $this->input->post('address1proffesional');
+        $address2 = $this->input->post('address2proffesional');
+        $city = $this->input->post('cityproffesional');
+        $services = $this->input->post('servicesproffesional');
+        $state = $this->input->post('stateproffesional');
+        $country = $this->input->post('countryproffesional');
+        $gender = $this->input->post('genderproffesional');
+        $formdata = [
+            "first_name" => $firstname,
+            "contact" => $phoneNo,
+            "street_add1" => $address1,
+            "street_add2" => $address2,
+            "services_list_id" => $services,
+            "city" => $city,
+            "state" => $state,
+            "country" => $country,
+            "gender" => $gender
+        ];
+        $query = $this->Professionalsmodel->updateProfessionalUserDetails($emails, $formdata);
+        print_r($query);
+        if ($query == 1) {
+            redirect('professionals/professionalsdashborad', 'refresh');
+        }
+    }
 
+    public function servicesproffesional()
+    {
+        $this->Services->test();
     }
 
 }

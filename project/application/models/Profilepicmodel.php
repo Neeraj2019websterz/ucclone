@@ -18,6 +18,7 @@ class Profilepicmodel Extends CI_Model
          $data = array(
             'profile_pic' => $picName,
         );
+         
         $this->db->where('email', $email);
         $this->db->update('professionals', $data);
    }

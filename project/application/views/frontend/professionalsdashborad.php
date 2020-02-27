@@ -16,7 +16,7 @@
                 <div class="col-lg-6">
                     <div class="hero-text">
                        
-                        <p><span class="display-4"><b><?php echo $result->first_name; ?></b></span>(edit profile) </p><br>
+                        <p><span class="display-4"><b><?php echo $result->first_name; ?></b></span><a href="<?php echo site_URL('professionals/updateprofessionalprofileform'); ?>">(edit profile)</a> </p><br>
                         <p>I’m a digital designer in love with photography, painting and discovering new worlds and cultures.</p>
                     </div>
                     <div class="hero-info">

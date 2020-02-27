@@ -32,3 +32,7 @@ margin: auto;
     border-radius: 120px;
     overflow: hidden;
 }
+  img.slider-img.img-responsive{
+    max-width: 313px !important;
+    max-height: 170px;
+}

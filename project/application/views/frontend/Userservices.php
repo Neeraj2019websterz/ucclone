@@ -2,18 +2,7 @@
 <?php $this->load->view('includes/header'); ?>
 <main id="main">
     <div class="form-img">
-        <div class="container  pt-5 pb-5">
-            <div class="row pt-5">
-                <div class="col-12 col-lg-6 pt-5">
-
-                </div>
-                <div class="col-12 col-lg-6 pt-5">
-                    <div class="bg-white w-100">
-                                           
-                    </div>
-                </div>
-            </div>
-        </div>
+      <?php $this->load->view('includes/slider'); ?>
     </div>
     <div class="container mt-3">
         <?php foreach ($getservicesgroup as $servicesgroup) { ?>
@@ -26,8 +15,11 @@
             ?>
                 <div class="col-sm-3 p-3">
                     <div class="servicescategery">
-                        <h5> IMAGE </h5>
+                  <img class="slider-img w-100 h-100" src="<?php echo base_url('assets\servicesimages/'.$servicescategery->services_image); ?>" />
+
+
                     </div>
+                       
                     <p class="text-secondary"><a href="<?php echo site_url('/subservices/'.$servicescategery->services_catagery_id); ?>"> <?php echo $servicescategery->services_categery_list ?></a></p>
                 </div>
         <?php

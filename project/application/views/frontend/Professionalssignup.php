@@ -11,7 +11,7 @@
                     <div class="bg-white w-100 pb-1">
                         <div class="card-body pb-5">
                             <h5 class="card-title text-center pb-3">Register</h5>
-                          <?php  form_open(site_URL('professionals/getformdataprofessional')); ?>
+                            <?php form_open(site_URL('professionals/getformdataprofessional')); ?>
                             <form class="form-signin" id="venderform-signup" >
 
                                 <div class="row pl-3 pr-3 form-1">
@@ -68,23 +68,21 @@
 
                                     <select  class="form-control" name="services" id="services">
                                         <option value="0">--Select a services--</option>
-                                        <?php foreach($services as $res)  {   ?>
-                                        <option value="<?php echo$res->services_catagery_id ?>"><?php echo$res->services_categery_list ?></option>
+                                        <?php foreach ($services as $res) { ?>
+                                            <option value="<?php echo$res->services_catagery_id ?>"><?php echo$res->services_categery_list ?></option>
                                         <?php } ?>
 
                                     </select>
                                     <span id="services" class="text-danger pb-3 float-left"></span>
                                 </div>
-                                 <div class="form-label-group pb-3 form-2">
+                                <div class="form-label-group pb-3 form-2">
 
 
                                     <select  class="form-control" name="city" id="city-1">
-                                        <option value="0">--Select a city--</option>
-                                        <option value="city-1">city-1</option>
-                                        <option value="city-1">city-2</option>
-                                        <option value="city-1">city-3</option>
-                                        <option value="city-1">city-4</option>
-                                        <option value="city-1">city-5</option>
+                                        <?php foreach ($city as $cityes) { ?>
+
+                                            <option value="<?php echo$cityes->city_id ?>"><?php echo$cityes->city ?></option>
+                                        <?php } ?>
                                     </select>
                                     <span id="city" class="text-danger pb-3 float-left"></span>
                                 </div>
@@ -101,12 +99,10 @@
 
                                     <select  class="form-control" name="state"  id="state-1">
                                         <option value="0">--Select a state--</option>
-                                        <option value="state-1">state-1</option>
-                                        <option value="state-2">state-2</option>
-                                        <option value="state-3">state-3</option>
-                                        <option value="state-4">state-4</option>
-                                        <option value="state-5">state-5</option>
-                                        <option value="state-6">state-6</option>
+                                           <?php foreach ($state as $statee) { ?>
+
+                                    <option value="<?php echo$statee->state_id ?>"><?php echo$statee->state?></option>
+                                <?php } ?>
                                     </select>
 
                                     <span id="state" class="text-danger pb-3 float-left"></span>
@@ -128,7 +124,7 @@
                                     <button id="vender-signup" class="btn btn-lg btn-primary btn-block text-uppercase form-2">sumbit</button>
                                 </div>
                             </form>
-                          <?php  form_close(); ?>
+                            <?php form_close(); ?>
 
                         </div>
                     </div>
